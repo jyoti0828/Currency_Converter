@@ -252,7 +252,7 @@ CurrencyConverterApp
 
 
 
-!\[Currency Converter](./screenshots/converter.png)
+![Currency Converter](./screenshots/converter.png)
 
 
 
@@ -266,7 +266,7 @@ and target currencies, reverse the selection, and perform a conversion.
 
 
 
-!\[Multi-Currency Conversion](./screenshots/multi-convert.png)
+![Multi-Currency Conversion](./screenshots/multi-convert.png)
 
 
 
@@ -280,7 +280,7 @@ selected and displays their conversion results together.
 
 
 
-!\[Conversion History](./screenshots/history.png)
+![Conversion History](./screenshots/history.png)
 
 
 
@@ -294,7 +294,7 @@ provides an option to export the history.
 
 
 
-!\[Login Screen](![Login Screen](./screenshots/login.png))
+![Login Screen](![Login Screen](./screenshots/login.png))
 
 
 
