@@ -318,9 +318,7 @@ Currency\_Converter/
 
 │   └── com/
 
-│       └── CGU/
-
-│           └── PROJECT/
+│      └── currencyconverter/
 
 │               ├── CurrencyConverter.java
 
