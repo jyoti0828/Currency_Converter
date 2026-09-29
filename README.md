@@ -1,523 +1,259 @@
-\# 💱 Currency Converter
+# 💱 Currency Converter
 
+A Java-based desktop **Currency Converter application** built with **Java Swing**, **AWT**, and the **Collections Framework**. The application performs currency conversion using exchange-rate data fetched from an external API, and additionally provides multi-currency conversion, conversion history, theme switching, clipboard support, history export, and a simple login interface.
 
+---
 
-A Java-based desktop \*\*Currency Converter application\*\* built with
+## 📑 Table of Contents
 
-\*\*Java Swing\*\*, \*\*AWT\*\*, and the \*\*Collections Framework\*\*. The
+1. [Features](#-features)
+2. [Technologies Used](#️-technologies-used)
+3. [Exchange Rate Data](#-exchange-rate-data)
+4. [Login](#-login)
+5. [Getting Started](#-getting-started)
+6. [Application Flow](#️-application-flow)
+7. [Screenshots](#-screenshots)
+8. [Project Structure](#-project-structure)
+9. [Main Components](#-main-components)
+10. [Supported Currency Examples](#-supported-currency-examples)
+11. [Security and Configuration Notes](#-security-and-configuration-notes)
+12. [Learning Outcomes](#-learning-outcomes)
+13. [Author](#-author)
+14. [Repository](#-repository)
 
-application provides currency conversion using exchange-rate data
+---
 
-fetched from an external API, along with multi-currency conversion,
+## ✨ Features
 
-conversion history, theme switching, clipboard support, history export,
+| Feature | Description |
+| --- | --- |
+| 💱 **Currency Conversion** | Convert an amount between supported currencies. |
+| 🌍 **Multi-Currency Conversion** | Convert one amount into multiple selected currencies at once. |
+| 🔄 **Reverse Conversion** | Quickly swap the source and target currencies. |
+| 📈 **Exchange Rate Display** | Shows the exchange rate used for the conversion. |
+| 🕒 **Last Updated Timestamp** | Displays the time at which the conversion was performed. |
+| 💡 **Market Insight** | Displays a simple insight related to the selected currency pair. |
+| 📜 **Conversion History** | Keeps a record of completed conversions. |
+| 📤 **Export History** | Exports conversion history to a file. |
+| 📋 **Copy Result** | Copies the conversion result to the clipboard. |
+| 🌓 **Theme Switching** | Toggles between the available light/dark UI themes. |
+| 🧹 **Clear Function** | Clears the current conversion fields and results. |
+| 🔐 **Login Interface** | Starts the application through a custom Java Swing login screen. |
+| 🎨 **Custom UI** | Uses custom buttons, backgrounds, and styled Swing components. |
 
-and a simple login interface.
+---
 
+## 🛠️ Technologies Used
 
+| Technology | Usage |
+| --- | --- |
+| ☕ Java | Core application development |
+| 🖥️ Java Swing | Desktop GUI |
+| 🎨 AWT | UI styling and event handling |
+| 🗂️ Collections Framework | Exchange-rate and history data handling |
+| 🌐 ExchangeRate-API | Exchange-rate data |
+| 📦 JSON | Parsing API responses |
+| 🧰 IntelliJ IDEA | Development environment |
 
-\## ✨ Features
+---
 
+## 🔌 Exchange Rate Data
 
+The application fetches exchange-rate data from **ExchangeRate-API** when the application starts. The retrieved `conversion_rates` are stored in a Java `Map` and used for subsequent conversions.
 
-\-   💱 \*\*Currency Conversion\*\* --- Convert an amount between supported
+If the API request fails, the application contains fallback exchange-rate values so that the converter can still operate.
 
-&#x20;   currencies.
+> ⚠️ **Note:** Exchange rates are dynamic and can change over time. The timestamp shown in the application is the local time at which the conversion was performed; it should not be interpreted as proof that the provider's underlying rates changed at that exact second.
 
-\-   🌍 \*\*Multi-Currency Conversion\*\* --- Convert one amount into
+---
 
-&#x20;   multiple selected currencies at once.
+## 🔐 Login
 
-\-   🔄 \*\*Reverse Conversion\*\* --- Quickly swap the source and target
+The application starts with a login screen before opening the currency converter.
 
-&#x20;   currencies.
+For the current demo implementation, the credentials are:
 
-\-   📈 \*\*Exchange Rate Display\*\* --- Shows the exchange rate used for
-
-&#x20;   the conversion.
-
-\-   🕒 \*\*Last Updated Timestamp\*\* --- Displays the time at which the
-
-&#x20;   conversion was performed.
-
-\-   💡 \*\*Market Insight\*\* --- Displays a simple insight related to the
-
-&#x20;   selected currency pair.
-
-\-   📜 \*\*Conversion History\*\* --- Keeps a record of completed
-
-&#x20;   conversions.
-
-\-   📤 \*\*Export History\*\* --- Export conversion history to a file.
-
-\-   📋 \*\*Copy Result\*\* --- Copy the conversion result to the clipboard.
-
-\-   🌓 \*\*Theme Switching\*\* --- Toggle between the available light/dark
-
-&#x20;   UI themes.
-
-\-   🧹 \*\*Clear Function\*\* --- Clear the current conversion
-
-&#x20;   fields/results.
-
-\-   🔐 \*\*Login Interface\*\* --- Starts the application through a custom
-
-&#x20;   Java Swing login screen.
-
-\-   🎨 \*\*Custom UI\*\* --- Uses custom buttons, backgrounds, and styled
-
-&#x20;   Swing components.
-
-
-
-\## 🛠️ Technologies Used
-
-
-
-&#x20; Technology                 Usage
-
-&#x20; -------------------------- -----------------------------------------
-
-&#x20; ☕ Java                    Core application development
-
-&#x20; 🖥️ Java Swing              Desktop GUI
-
-&#x20; 🎨 AWT                     UI styling and event handling
-
-&#x20; 🗂️ Collections Framework   Exchange-rate and history data handling
-
-&#x20; 🌐 ExchangeRate-API        Exchange-rate data
-
-&#x20; 📦 JSON                    Parsing API responses
-
-&#x20; 🧰 IntelliJ IDEA           Development environment
-
-
-
-\## 🔌 Exchange Rate Data
-
-
-
-The application fetches exchange-rate data from \*\*ExchangeRate-API\*\*
-
-when the application starts. The retrieved `conversion\_rates` are stored
-
-in a Java `Map` and used for subsequent conversions.
-
-
-
-If the API request fails, the application contains fallback
-
-exchange-rate values so that the converter can still operate.
-
-
-
-> ⚠️ \*\*Note:\*\* Exchange rates are dynamic and can change over time. The
-
-> timestamp shown in the application is the local time at which the
-
-> conversion was performed; it should not be interpreted as proof that
-
-> the provider's underlying rates changed at that exact second.
-
-
-
-\## 🔐 Login
-
-
-
-The application starts with a login screen before opening the currency
-
-converter.
-
-
-
-For the current demo implementation:
-
-
-
-``` text
-
+```text
 Username: user
-
 Password: 123
-
 ```
 
+> ⚠️ This is a simple local/demo login implemented in the application code, not a production-grade authentication system.
 
+---
 
-> ⚠️ This is a simple local/demo login implemented in the application
+## 🚀 Getting Started
 
-> code, not a production-grade authentication system.
+### Prerequisites
 
+- Java **JDK 17 or higher**
+- IntelliJ IDEA or another Java IDE
+- Internet connection for fetching exchange-rate data
+- The JSON library required by the project (`org.json`)
 
+### Running with IntelliJ IDEA
 
-\## 🚀 Getting Started
+1. Clone the repository:
 
+   ```bash
+   git clone https://github.com/jyoti0828/Currency_Converter.git
+   ```
 
+2. Open the project in **IntelliJ IDEA**.
+3. Ensure that the Java source files are included in the project.
+4. Ensure that the required `org.json` dependency is available.
+5. Run the following file:
 
-\### Prerequisites
-
-
-
-\-   Java \*\*JDK 17 or higher\*\*
-
-\-   IntelliJ IDEA or another Java IDE
-
-\-   Internet connection for fetching exchange-rate data
-
-\-   The JSON library required by the project (`org.json`)
-
-
-
-\### Run with IntelliJ IDEA
-
-
-
-1\.  Clone the repository:
-
-
-
-``` bash
-
-git clone https://github.com/jyoti0828/Currency\_Converter.git
-
-```
-
-
-
-2\.  Open the project in \*\*IntelliJ IDEA\*\*.
-
-3\.  Make sure the Java source files are included in the project.
-
-4\.  Make sure the required `org.json` dependency is available.
-
-5\.  Run:
-
-
-
-``` text
-
-CurrencyConverterApp.java
-
-```
-
-
+   ```text
+   CurrencyConverterApp.java
+   ```
 
 The application opens the login screen first.
 
+---
 
+## ▶️ Application Flow
 
-\### ▶️ Application Flow
-
-
-
-``` text
-
+```text
 CurrencyConverterApp
-
-&#x20;       ↓
-
-&#x20;  Login Page
-
-&#x20;       ↓
-
-&#x20;Currency Converter
-
-&#x20;       ↓
-
-&#x20;┌───────────────┬──────────────────┐
-
-&#x20;│ Convert       │ Multi Convert     │
-
-&#x20;└───────────────┴──────────────────┘
-
-&#x20;       ↓
-
-&#x20;Result + Exchange Rate + Insight
-
-&#x20;       ↓
-
-&#x20;History / Copy / Export / Theme
-
+        ↓
+   Login Page
+        ↓
+ Currency Converter
+        ↓
+ ┌───────────────┬──────────────────┐
+ │ Convert       │ Multi Convert    │
+ └───────────────┴──────────────────┘
+        ↓
+ Result + Exchange Rate + Insight
+        ↓
+ History / Copy / Export / Theme
 ```
 
+---
 
+## 📸 Screenshots
 
-\## 📸 Screenshots
+### 🔐 Login Screen
 
+![Login Screen](./screenshots/login.png)
 
+The application starts with a custom login interface before opening the converter.
 
-\### 🔐 Login Screen
-
-
-
-![Login Screen](![Login Screen](./screenshots/login.png))
-
-
-
-The application starts with a custom login interface before opening the
-
-converter.
-
-
-
-\### 💱 Currency Converter
-
-
+### 💱 Currency Converter
 
 ![Currency Converter](./screenshots/converter.png)
 
+The main interface allows the user to enter an amount, choose the source and target currencies, reverse the selection, and perform a conversion.
 
-
-The main interface allows the user to enter an amount, choose the source
-
-and target currencies, reverse the selection, and perform a conversion.
-
-
-
-\### 🌍 Multi-Currency Conversion
-
-
+### 🌍 Multi-Currency Conversion
 
 ![Multi-Currency Conversion](./screenshots/multi-convert.png)
 
+The multi-convert feature allows multiple target currencies to be selected and displays their conversion results together.
 
-
-The multi-convert feature allows multiple target currencies to be
-
-selected and displays their conversion results together.
-
-
-
-\### 📜 Conversion History
-
-
+### 📜 Conversion History
 
 ![Conversion History](./screenshots/history.png)
 
+The application records completed conversions with their timestamps and provides an option to export the history.
 
+---
 
-The application records completed conversions with their timestamps and
+## 📁 Project Structure
 
-provides an option to export the history.
-
-
-
-\## 📁 Project Structure
-
-
-
-``` text
-
-Currency\_Converter/
-
+```text
+Currency_Converter/
 │
-
 ├── src/
-
 │   └── com/
-
-│      └── currencyconverter/
-
-│               ├── CurrencyConverter.java
-
-│               ├── CurrencyConverterApp.java
-
-│               ├── CurrencyConverterUI.java
-
-│               ├── CustomButton.java
-
-│               ├── LoginPage.java
-
-│               ├── BACKGROUND.jpg
-
-│               ├── DARK.png
-
-│               └── LOGIN\_BACKGROUND.jpg
-
+│       └── currencyconverter/
+│           ├── CurrencyConverter.java
+│           ├── CurrencyConverterApp.java
+│           ├── CurrencyConverterUI.java
+│           ├── CustomButton.java
+│           ├── LoginPage.java
+│           ├── BACKGROUND.jpg
+│           ├── DARK.png
+│           └── LOGIN_BACKGROUND.jpg
 │
-
 ├── screenshots/
-
 │   ├── converter.png
-
 │   ├── history.png
-
 │   ├── login.png
-
 │   └── multi-convert.png
-
 │
-
 ├── README.md
-
 └── .gitignore
-
 ```
 
+> The exact folder layout may vary depending on whether the project is opened/imported through an IDE or compiled manually.
 
+---
 
-> The exact folder layout may vary depending on whether the project is
+## 🧩 Main Components
 
-> opened/imported through an IDE or compiled manually.
+| File | Responsibility |
+| --- | --- |
+| `CurrencyConverter.java` | Handles exchange-rate retrieval, stores the rates, calculates conversions, and provides exchange-rate information. |
+| `CurrencyConverterUI.java` | Contains the main Swing interface and handles conversion, reverse conversion, multi-currency conversion, history, theme switching, clipboard copying, clearing, and history export. |
+| `CurrencyConverterApp.java` | Acts as the application entry point and launches the login screen through Swing's event-dispatch thread. |
+| `LoginPage.java` | Provides the login interface and opens the main converter after successful demo authentication. |
+| `CustomButton.java` | Provides the custom-styled button component used by the application. |
 
+---
 
-
-\## 🧩 Main Components
-
-
-
-\### `CurrencyConverter.java`
-
-
-
-Handles exchange-rate retrieval, stores the rates, calculates
-
-conversions, and provides exchange-rate information.
-
-
-
-\### `CurrencyConverterUI.java`
-
-
-
-Contains the main Swing interface and handles conversion, reverse
-
-conversion, multi-currency conversion, history, theme switching,
-
-clipboard copying, clearing, and history export.
-
-
-
-\### `CurrencyConverterApp.java`
-
-
-
-Acts as the application entry point and launches the login screen
-
-through Swing's event-dispatch thread.
-
-
-
-\### `LoginPage.java`
-
-
-
-Provides the login interface and opens the main converter after
-
-successful demo authentication.
-
-
-
-\### `CustomButton.java`
-
-
-
-Provides the custom-styled button component used by the application.
-
-
-
-\## 📌 Supported Currency Examples
-
-
+## 📌 Supported Currency Examples
 
 The current multi-conversion interface provides options including:
 
+- 🇺🇸 USD
+- 🇮🇳 INR
+- 🇪🇺 EUR
+- 🇬🇧 GBP
+- 🇯🇵 JPY
 
+The main currency selectors are populated from the exchange-rate data returned by the API.
 
-\-   🇺🇸 USD
+---
 
-\-   🇮🇳 INR
+## 🔒 Security and Configuration Notes
 
-\-   🇪🇺 EUR
+The current project is a learning/demo desktop application. For a production application:
 
-\-   🇬🇧 GBP
+- 🔑 Do not hard-code API keys directly in source code.
+- 🌱 Store secrets in environment variables or a secure configuration system.
+- 🔐 Replace the hard-coded demo login with proper authentication.
+- 🛡️ Avoid storing real user passwords in plaintext.
 
-\-   🇯🇵 JPY
+---
 
-
-
-The main currency selectors are populated from the exchange-rate data
-
-returned by the API.
-
-
-
-\## 🔒 Security \& Configuration Note
-
-
-
-The current project is a learning/demo desktop application. For a
-
-production application:
-
-
-
-\-   🔑 Do not hard-code API keys directly in source code.
-
-\-   🌱 Store secrets in environment variables or a secure configuration
-
-&#x20;   system.
-
-\-   🔐 Replace the hard-coded demo login with proper authentication.
-
-\-   🛡️ Avoid storing real user passwords in plaintext.
-
-
-
-\## 🎯 Learning Outcomes
-
-
+## 🎯 Learning Outcomes
 
 This project demonstrates practical use of:
 
+- Object-oriented Java programming
+- Java Swing GUI development
+- Event-driven programming
+- HTTP requests and API integration
+- JSON parsing
+- Java Collections
+- File handling
+- Date/time handling
+- Clipboard operations
+- Modular class design
+- Basic desktop application UX
 
+---
 
-\-   Object-oriented Java programming
+## 👩‍💻 Author
 
-\-   Java Swing GUI development
+**Jyoti**
 
-\-   Event-driven programming
+GitHub: [@jyoti0828](https://github.com/jyoti0828)
 
-\-   HTTP requests and API integration
+---
 
-\-   JSON parsing
+## ⭐ Repository
 
-\-   Java Collections
-
-\-   File handling
-
-\-   Date/time handling
-
-\-   Clipboard operations
-
-\-   Modular class design
-
-\-   Basic desktop application UX
-
-
-
-\## 👩‍💻 Author
-
-
-
-\*\*Jyoti\*\*
-
-
-
-GitHub: \[@jyoti0828](https://github.com/jyoti0828)
-
-
-
-\## ⭐ Repository
-
-
-
-\[View the Currency Converter project on
-
-GitHub](https://github.com/jyoti0828/Currency\_Converter)
-
-
-
-
+[View the Currency Converter project on GitHub](https://github.com/jyoti0828/Currency_Converter)
