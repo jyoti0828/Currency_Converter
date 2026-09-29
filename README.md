@@ -248,6 +248,20 @@ CurrencyConverterApp
 
 
 
+\### 🔐 Login Screen
+
+
+
+![Login Screen](![Login Screen](./screenshots/login.png))
+
+
+
+The application starts with a custom login interface before opening the
+
+converter.
+
+
+
 \### 💱 Currency Converter
 
 
@@ -287,20 +301,6 @@ selected and displays their conversion results together.
 The application records completed conversions with their timestamps and
 
 provides an option to export the history.
-
-
-
-\### 🔐 Login Screen
-
-
-
-![Login Screen](![Login Screen](./screenshots/login.png))
-
-
-
-The application starts with a custom login interface before opening the
-
-converter.
 
 
 
